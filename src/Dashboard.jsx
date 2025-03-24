@@ -1,9 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import supabase from "./supabaseClient"; // Import Supabase for authentication
 
 const Dashboard = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
+    const [time, setTime] = useState(""); // State for Philippine time
+
+    // Function to update real-time PH time
+    useEffect(() => {
+        const updateTime = () => {
+            const now = new Date();
+            const options = {
+                timeZone: "Asia/Manila",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true
+            };
+            setTime(new Intl.DateTimeFormat("en-US", options).format(now));
+        };
+
+        updateTime(); // Set initial time
+        const interval = setInterval(updateTime, 1000); // Update every second
+
+        return () => clearInterval(interval); // Cleanup interval on unmount
+    }, []);
 
     // Function to handle logout
     const handleLogout = async () => {
@@ -11,7 +32,7 @@ const Dashboard = () => {
         window.location.href = "/login"; // Redirect to login
     };
 
-    // Function to open file upload modal
+    // Function to open and close file upload modal
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
@@ -41,25 +62,32 @@ const Dashboard = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-            <h2 className="text-3xl font-bold text-gray-700">Dashboard</h2>
+        <div 
+            className="flex flex-col items-center justify-center min-h-screen bg-cover bg-center"
+            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1560807707-8cc77767d783?w=1600')" }} // Replace with a reliable static image URL
+        >
+            {/* Real-Time PH Time */}
+            <div className="absolute top-4 text-5xl font-semibold text-white bg-black bg-opacity-60 px-4 py-2 rounded-lg">
+    {time}
+</div>
 
+    
             {/* Open File Upload Modal */}
             <button
                 onClick={openModal}
                 className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
             >
-                Upload Files
+                UPLOAD FILES
             </button>
-
+    
             {/* Logout Button */}
             <button
                 onClick={handleLogout}
                 className="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
             >
-                Logout
+                LOGOUT
             </button>
-
+    
             {/* File Upload Modal */}
             {isModalOpen && (
                 <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
