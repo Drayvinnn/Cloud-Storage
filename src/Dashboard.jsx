@@ -67,15 +67,14 @@ const Dashboard = () => {
             style={{ backgroundImage: "url('https://images.unsplash.com/photo-1560807707-8cc77767d783?w=1600')" }} // Replace with a reliable static image URL
         >
             {/* Real-Time PH Time */}
-            <div className="absolute top-4 text-5xl font-semibold text-white bg-black bg-opacity-60 px-4 py-2 rounded-lg">
-    {time}
-</div>
-
+            <div className="absolute top-4 text-5xl font-semibold text-white px-4 py-2 rounded-lg">
+                {time}
+            </div>
     
             {/* Open File Upload Modal */}
             <button
                 onClick={openModal}
-                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                className="mt-10 px-10 py-10 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
             >
                 UPLOAD FILES
             </button>
@@ -83,7 +82,7 @@ const Dashboard = () => {
             {/* Logout Button */}
             <button
                 onClick={handleLogout}
-                className="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
+                className="mt-10 px-10 py-10 bg-red-500 text-white rounded-lg hover:bg-red-600"
             >
                 LOGOUT
             </button>

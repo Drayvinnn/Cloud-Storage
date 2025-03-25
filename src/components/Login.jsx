@@ -37,7 +37,7 @@ const Login = () => {
                         <label className="block text-sm font-medium text-gray-700">Email</label>
                         <input
                             type="email"
-                            className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                            className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:outline-none"
                             placeholder="Enter your email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -48,7 +48,7 @@ const Login = () => {
                         <label className="block text-sm font-medium text-gray-700">Password</label>
                         <input
                             type="password"
-                            className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                            className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:outline-none"
                             placeholder="Enter your password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
@@ -57,7 +57,7 @@ const Login = () => {
                     </div>
                     <button
                         type="submit"
-                        className="w-full py-3 text-white font-semibold bg-yellow-500 rounded-lg hover:bg-purple-700 transition duration-300"
+                        className="w-full py-3 text-white font-semibold bg-yellow-500 rounded-lg hover:bg-yellow-700 transition duration-300"
                     >
                         Sign In
                     </button>
